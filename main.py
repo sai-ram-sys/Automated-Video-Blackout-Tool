@@ -4,15 +4,9 @@ import os
 # Keep input_video_path
 input_video_path = r"C:\Users\ASUS\Desktop\PythonDataAnnotation\Data_anonymization\SourceClips\05.03.2025\20250305_17_10_10_Pro_FTS1.mp4"
 
-# Extract filename and generate output path dynamically
-input_filename = os.path.basename(input_video_path)  # Extract "20250305_15_22_15_Pro_FTS1.mp4"
-name, ext = os.path.splitext(input_filename)  # Split into "20250305_15_22_15_Pro_FTS1" and ".mp4"
-
-# Define output folder
-output_folder = r"C:\Users\ASUS\Desktop\PythonDataAnnotation\Data_anonymization\anonymized\06.03.2025"
-
-# Generate dynamic output filename
-output_video_path = os.path.join(output_folder, f"BlackedOut{input_filename}")
+# Generate output file path in the same location with "BlackedOut_" prefix
+dirname, filename = os.path.split(input_video_path)
+output_video_path = os.path.join(dirname, "BlackedOut_" + filename)
 
 # Open video
 cap = cv2.VideoCapture(input_video_path)
